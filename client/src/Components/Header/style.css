@@ -1,0 +1,18 @@
+.header{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: whitesmoke;
+}
+
+.header__taps{
+    display: flex;
+    align-items: center;
+}
+
+.tap{
+    margin-left: 20px;
+}
+
+
