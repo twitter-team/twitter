@@ -17,9 +17,12 @@ export const loadUser = () => async (dispatch) => {
     };
     const res = await fetch(`${Local_IP}/api/user/auth`, requestOptions)
     const user = await res.json()
-    // console.log(user)
-
-    dispatch(setUser(user))
+    console.log(user)
+    if(user.success){
+        dispatch(setUser(user))
+    }else{
+        dispatch(Fail())
+    }
 }
 
 export const login = (email,password) => async (dispatch) => {
