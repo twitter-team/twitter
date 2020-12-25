@@ -7,7 +7,7 @@ export const setUser = user => ({
 })
 
 export const Fail = () => ({
-    type : UserTypes.LOGIN_FAIL
+    type : UserTypes.FAIL
 })
 
 export const loadUser = () => async (dispatch) => {
@@ -41,7 +41,7 @@ export const login = (email,password) => async (dispatch) => {
     }
 }
 
-export const signup = (name,email,password) => async(dispatch) => {
+export const signUp = (name,email,password) => async(dispatch) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
@@ -56,3 +56,7 @@ export const signup = (name,email,password) => async(dispatch) => {
         dispatch(Fail())
     }
 }
+
+export const logOut = () => ({
+    type: UserTypes.LOGOUT
+})
