@@ -11,6 +11,7 @@ export const Fail = () => ({
 })
 
 export const loadUser = () => async (dispatch) => {
+    console.log(localStorage.getItem('Authorization'))
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('Authorization') }

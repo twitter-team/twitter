@@ -3,7 +3,7 @@ import { UserTypes } from './userTypes'
 const INITIAL_STATE = {
     token: localStorage.getItem('Authorization'),
     loading: true,
-    isAuth: null,
+    isAuth: false,
     user: null
 };
 
@@ -20,7 +20,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                isAuth: null,
+                isAuth: false,
                 user: null
             };
         case UserTypes.LOGOUT:
@@ -28,7 +28,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loading: false,
-                isAuth: null,
+                isAuth: false,
                 user: null
             }
         default:

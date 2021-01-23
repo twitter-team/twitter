@@ -14,6 +14,9 @@
 .header__logo{
     width: 70px;
     object-fit: contain;
+    max-height: 50px;
+    padding-top: 10px;
+
 }
 
 .header__contents{
