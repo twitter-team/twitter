@@ -1,0 +1,109 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 15px; */
+    background-color: rgba(255, 255, 255, 0.966);
+    opacity: .98;
+    box-shadow: 0 6px 6px -6px #777;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.header__logo{
+    width: 70px;
+    object-fit: contain;
+}
+
+.header__contents{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.header__taps{
+    margin-right: 25px;
+    margin-bottom: 0;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.contents__content{
+    margin-left: 20px;
+}
+
+
+.Header{
+    padding: .6rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(245, 245, 245, .90);
+    align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.header__logo{
+    width: 12rem;
+    object-fit: contain;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+}
+
+.Dialog__image{
+    width: 60%;
+    /* object-fit: contain; */
+    border-radius:150px;
+    /* box-shadow: 0px 0px 5px 5px white inset; */
+}
+
+.login_button{
+    text-transform: none !important;
+}
+
+.dialog_button{
+    margin-top: 1rem !important;
+}
+
+.Dialog{
+    display: flex;
+    justify-content: center;
+}
+
+.AddDialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__avatar{
+    margin-right: 20px;
+}
+
+
+
+.header__taps{
+    display: flex;
+    align-items: center;
+}
+
+.tap{
+    margin-left: 20px;
+}
+
+
