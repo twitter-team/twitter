@@ -16,15 +16,6 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    mobile: {
-        type: Number
-    },
-    address: {
-        type: String
-    },
-    role: {
-        type: String
     }
 
 }, { timestamps: true })

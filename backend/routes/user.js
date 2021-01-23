@@ -35,7 +35,7 @@ router.post('/signup', async (req, res) => {
         })
 
         await user.save()
-        const token = await jwt.sign({ _id: user._id }, process.env.secret)
+        const token = await jwt.sign({ _id: user._id }, "mysecret")
         res.header("Authorization", token).status(201).json({
             sucess: true,
             user,
@@ -56,7 +56,7 @@ router.post('/signin', async(req, res) => {
         const match = await bcrypt.compare(req.body.password, user.password)
         // console.log(match)
         if (match) {
-            const token = await jwt.sign({ _id: user._id }, process.env.secret)
+            const token = await jwt.sign({ _id: user._id }, "mysecret")
             res.header('Authorization', token).status(201).json({
                 success: true,
                 token,
