@@ -40,12 +40,12 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme,h) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "white",
     display: 'flex',
-    height: 200,
+    height: h,
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VerticalTabs=function ({items}) {
-  const classes = useStyles();
+  const classes = useStyles(0,250);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -76,19 +76,36 @@ const VerticalTabs=function ({items}) {
         <Tab label={items[3]} {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0} style={{width:"100%"}}>
-        <SearcComp/>
+        {console.log("ssssssss",items[0])}
+        {
+          items[0]==="top"?
+          <SearcComp/>
+          :<></>
+        }
         Item One
       </TabPanel>
-      <TabPanel value={value} index={1}>
-      <SearcComp/>
+      <TabPanel value={value} index={1} style={{width:"100%"}}>
+      {
+          items[0]==="top"?
+          <SearcComp/>
+          :<></>
+        }
         Item Two
       </TabPanel>
-      <TabPanel value={value} index={2}>
-      <SearcComp/>
+      <TabPanel value={value} index={2} style={{width:"100%"}}>
+      {
+          items[0]==="top"?
+          <SearcComp/>
+          :<></>
+        }
         Item Three
       </TabPanel>
-      <TabPanel value={value} index={3}>
-      <SearcComp/>
+      <TabPanel value={value} index={3} style={{width:"100%"}}>
+      {
+          items[0]==="top"?
+          <SearcComp/>
+          :<></>
+        }
         Item Four
       </TabPanel>
     </div>
