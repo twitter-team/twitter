@@ -15,7 +15,11 @@ function Widgets() {
 
                 <TwitterTweetEmbed tweetId={"858551177860055040"} />
 
-
+                <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName="AndreiNeagoie"
+                    options={{ height: 400 }}
+                />
 
             </div>
         </div>

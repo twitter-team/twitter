@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import SearcComp from "../searchComp/SearchComp"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,16 +75,20 @@ const VerticalTabs=function ({items}) {
         <Tab label={items[2]} {...a11yProps(2)} />
         <Tab label={items[3]} {...a11yProps(3)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} style={{width:"100%"}}>
+        <SearcComp/>
         Item One
       </TabPanel>
       <TabPanel value={value} index={1}>
+      <SearcComp/>
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
+      <SearcComp/>
         Item Three
       </TabPanel>
       <TabPanel value={value} index={3}>
+      <SearcComp/>
         Item Four
       </TabPanel>
     </div>

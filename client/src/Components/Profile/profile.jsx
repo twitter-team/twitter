@@ -1,70 +1,43 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import { Link } from 'react-router-dom';
-
-import ProfileAndDropDown from "../profileAndDropdown/profileAndDropdown"
-
-import "../Header/style.css"
+import React from "react"
+import NavBar from "../navBar/navBar"
+import "./profile.css"
+import Bookmarks from "../Bookmarks/bookmarks"
+import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux'
 
 
-
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
+const Profile = ({user}) => {
     return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`scrollable-auto-tabpanel-${index}`}
-            aria-labelledby={`scrollable-auto-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
-        </div>
-    );
-}
+        <div>
+            <NavBar />
+            <div className='profile'>
 
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
-};
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        width: '100%',
-        backgroundColor: theme.palette.background.paper,
-    },
-}));
-
-const Profile = function () {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.root} >
-
-            <AppBar position="static" color="default" style={{ maxHeight: "70px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                <Link to="/" style={{cursor:"pointer"}}>
-                    <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
-                </Link>
-               
-
-                <div className='header__taps'>
-                    <ProfileAndDropDown />
+                <div className='backprofile__picture'></div>
+                <div className='homepage__text'  >
+                    <div className='profile__picture' ></div>
+                    <div style={{paddingRight:"20px",paddingLeft:"200px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                        <h3>{user.name.toUpperCase()}</h3>
+                        <div style={{display:"flex",marginLeft:"-250px"}}>
+                            <span><strong>2586</strong> following</span>
+                            <span style={{marginLeft:"10px"}}><strong>2586</strong> followers</span>
+                        </div>
+                        <Button variant="contained" color="primary">
+                            follow
+                        </Button>
+                    </div>
+                    <h4 style={{color:"gray",textAlign:"left",paddingLeft:"200px"}}>ABOUT ME</h4>
                 </div>
-            </AppBar>
+            </div>
+            <div style={{ marginTop: "8%" }}>
+                <Bookmarks />
+            </div>
+
         </div>
-    );
+    )
 }
-
-
-export default Profile
+const mapStateToProps=({user:{user}})=>{
+    return{
+        user
+    }
+}
+export default connect(mapStateToProps)(Profile)
