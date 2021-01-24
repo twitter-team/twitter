@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button, TextField  } from '@material-ui/core'
+import { connect } from "react-redux"
+import {setUser} from "../../Redux/user/userAction"
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -36,6 +38,7 @@ class SignUp extends React.Component {
                 }else{
                     localStorage.setItem('Authorization',data.token)
                     this.props.handleClose()
+                    this.props.setUser(data.user)
                     this.setState({ name: '',email: '',password: ''})
                 }
 
@@ -89,6 +92,12 @@ class SignUp extends React.Component {
         )
     }
 }
+const mapDispatchToProps=dispatch=>{
+    return{
+        setUser:user=>dispatch(setUser(user))
+    }
+}
 
 
-export default SignUp
+
+export default connect(null,mapDispatchToProps)(SignUp)

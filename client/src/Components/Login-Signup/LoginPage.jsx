@@ -1,5 +1,8 @@
 import React from 'react'
-import { Button, TextField  } from '@material-ui/core'
+import { Button, TextField, ThemeProvider  } from '@material-ui/core'
+import { connect } from "react-redux"
+import {setUser} from "../../Redux/user/userAction"
+
 
 class LogIn extends React.Component {
     constructor(props) {
@@ -35,6 +38,7 @@ class LogIn extends React.Component {
                 }else{
                     localStorage.setItem('Authorization',data.token)
                     this.props.handleClose()
+                    this.props.setUser(data.user)
                     this.setState({email: '',password: ''})
                 }
 
@@ -73,12 +77,17 @@ class LogIn extends React.Component {
                     required
                 />
 
-                <Button type='submit' className='dialog_button'  > Sign Up </Button>
+                <Button type='submit' className='dialog_button'  > Sign In </Button>
                 </form>
 
         )
     }
 }
 
+const mapDispatchToProps=dispatch=>{
+    return{
+        setUser:user=>dispatch(setUser(user))
+    }
+}
 
-export default LogIn
+export default connect(null,mapDispatchToProps)(LogIn)

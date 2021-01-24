@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import {connect} from 'react-redux'
-import Header from './Components/Header/Header'
+import ScrollableTabsButtonAuto from './Components/horizantalTab/horizantalTab'
 import { loadUser } from './Redux/user/userAction'
 
 import './App.css';
@@ -14,7 +14,7 @@ const App = ({loadUser}) => {
 
   return (
     <div className="App">
-      <Header />
+      <ScrollableTabsButtonAuto />
     </div>
   );
 }
