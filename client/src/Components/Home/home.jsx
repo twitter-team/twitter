@@ -1,5 +1,6 @@
 import React from "react"
-
+import Trends from "../Trends/Trends"
+import TwitterEmbed from "../TwitterEmbed/TwitterEmbed"
 const Home =()=>{
     return(
         <div style={{width:"80%",marginRight:"auto",marginLeft:"auto",display:"flex",justifyContent:"center",alignItems:"center"}}>
@@ -7,7 +8,8 @@ const Home =()=>{
                 left
             </div>
             <div style={{width:"30%"}}>
-                right
+                <Trends/>
+                <TwitterEmbed/>
             </div>
         </div>
     )

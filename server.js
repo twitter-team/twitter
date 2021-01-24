@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+const dotenv = require("dotenv")
+dotenv.config()
 
-
-mongoose.connect("mongodb+srv://asemOne:asem1234@cluster0.xqniz.mongodb.net/twitter?retryWrites=true&w=majority",
+mongoose.connect(process.env.DB_CONNECT,
     {
       useNewUrlParser: true, useUnifiedTopology: true,
       useCreateIndex: true, useFindAndModify: false

@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
 
     const token = req.header('Authorization') 
     if (token) {
-      const decoded = await jwt.verify(token, "mysecret") 
+      const decoded = await jwt.verify(token, process.env.SECRET) 
      
       const user = await User.findOne({ _id: decoded._id })
       
