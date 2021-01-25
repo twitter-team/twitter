@@ -37,6 +37,18 @@ const userSchema = mongoose.Schema({
     followers:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+    }],
+    tweets:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
+    }],
+    retweets:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
+    }],
+    likes:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
     }]
 
 }, { timestamps: true })

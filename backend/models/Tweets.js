@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const tweetSchema = mongoose.Schema({
     userid: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
@@ -30,7 +30,7 @@ const tweetSchema = mongoose.Schema({
             ref: 'User',
         }
     ],
-    commints:[{
+    comments:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comments', 
     }]
