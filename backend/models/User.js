@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     bio:{
         type:String
     },
-    fav:[{
+    bookmarks:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Tweet',
     }],
