@@ -31,7 +31,7 @@ router.post('/signup', async (req, res) => {
             email: req.body.email,
             password: hashedPw,
             mobile: req.body.mobile,
-            address: req.body.address
+            bio: req.body.bio
         })
 
         await user.save()
@@ -68,6 +68,7 @@ router.post('/signin', async (req, res) => {
     }
 
 })
+//
 // route for the fav & followers & following & tweets (post)
 //geting the userinfo 
 router.post('/profile', async (req, res) => {
@@ -93,24 +94,24 @@ router.post('/follow', async (req, res) => {
             return res.status(400).send(err);
         if (user) {
             user.followers.push(req.body.meid)
-            User.updateOne({ _id: req.body.userid }, { followers: followers }, (err, updated) => {
+            User.updateOne({ _id: req.body.userid }, { followers: user.followers }, (err, updated) => {
                 if (err)
                     return res.status(400).send(err);
                 if (updated) {
                     User.findOne({ _id: req.body.meid }, (err, user1) => {
-                            if (err)
-                                return res.status(400).send(err);
-                            if (user1) {
-                                user1.following.push(req.body.userid)
-                                //update it in the database 
-                                User.updateOne({ _id: req.body.meid }, { following: following }, (err, data) => {
-                                        if (err)
-                                            return res.status(400).send(err);
-                                        if (data) {
-                                            return res.status(200).send('followed')
-                                        }
-                                })
-                            }
+                        if (err)
+                            return res.status(400).send(err);
+                        if (user1) {
+                            user1.following.push(req.body.userid)
+                            //update it in the database 
+                            User.updateOne({ _id: req.body.meid }, { following: user1.following }, (err, data) => {
+                                if (err)
+                                    return res.status(400).send(err);
+                                if (data) {
+                                    return res.status(200).send('followed')
+                                }
+                            })
+                        }
                     })
                 }
             })
@@ -136,22 +137,22 @@ router.post('/unfollow', async (req, res) => {
                     return res.status(400).send(err);
                 if (updated) {
                     User.findOne({ _id: req.body.meid }, (err, user1) => {
-                            if (err)
-                                return res.status(400).send(err);
-                            if (user1) {
-                                let following = user1.following.filter((element, i) => {
-                                    return element.toString() !== req.body.userid
-                                })
-                                // console.log('following line 158', following)
-                                //update it in the database 
-                                User.updateOne({ _id: req.body.meid }, { following: following }, (err, data) => {
-                                        if (err)
-                                            return res.status(400).send(err);
-                                        if (data) {
-                                            return res.status(200).send('unfollowed')
-                                        }
-                                })
-                            }
+                        if (err)
+                            return res.status(400).send(err);
+                        if (user1) {
+                            let following = user1.following.filter((element, i) => {
+                                return element.toString() !== req.body.userid
+                            })
+                            // console.log('following line 158', following)
+                            //update it in the database 
+                            User.updateOne({ _id: req.body.meid }, { following: following }, (err, data) => {
+                                if (err)
+                                    return res.status(400).send(err);
+                                if (data) {
+                                    return res.status(200).send('unfollowed')
+                                }
+                            })
+                        }
                     })
                 }
             })
@@ -166,10 +167,8 @@ router.post('/addBookmark', async (req, res) => {
         if (err)
             return res.status(400).send(err);
         if (user) {
-            let bookmarks = user.bookmarks.filter((element, i) => {
-                return element.toString() !== req.body.tweetid
-            })
-            User.updateOne({ _id: req.body.userid }, { bookmarks: bookmarks }, (err, updated) => {
+            user.bookmarks.push(req.body.tweetid)
+            User.updateOne({ _id: req.body.userid }, { bookmarks: user.bookmarks }, (err, updated) => {
                 if (err)
                     return res.status(400).send(err);
                 if (updated) {
@@ -177,7 +176,7 @@ router.post('/addBookmark', async (req, res) => {
                         if (err)
                             return res.status(400).send(err);
                         if (tweet) {
-                            tweet.saved = tweet.saved +1
+                            tweet.saved = tweet.saved + 1
                             Tweet.updateOne({ _id: req.body.tweetid }, { saved: tweet.saved }, (err, data) => {
                                 if (err)
                                     return res.status(400).send(err);
@@ -200,7 +199,7 @@ router.post('/deleteBookmark', async (req, res) => {
         if (err)
             return res.status(400).send(err);
         if (user) {
-            let bookmarks = user.bookmarks.filter((element, i) => {
+            let bookmarks = user.bookmarks.filter((element) => {
                 return element.toString() !== req.body.tweetid
             })
             User.updateOne({ _id: req.body.userid }, { bookmarks: bookmarks }, (err, updated) => {
@@ -213,6 +212,105 @@ router.post('/deleteBookmark', async (req, res) => {
                         if (tweet) {
                             tweet.saved = tweet.saved - 1
                             Tweet.updateOne({ _id: req.body.tweetid }, { saved: tweet.saved }, (err, data) => {
+                                if (err)
+                                    return res.status(400).send(err);
+                                if (data) {
+                                    return res.status(200).send('done')
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
+})
+//retweets route
+//retweet
+router.post('/retweet', async (req, res) => {
+    await User.findOne({ _id: req.body.userid }, (err, user) => {
+        if (err)
+            return res.status(400).send(err);
+        if (user) {
+            console.log('befor',user.retweets)
+            user.retweets.push(req.body.tweetid)
+            console.log('after',user.retweets)
+            User.updateOne({ _id: req.body.userid }, { retweets: user.retweets }, (err, updated) => {
+                if (err)
+                    return res.status(400).send(err);
+                if (updated) {
+                    Tweet.findOne({ _id: req.body.tweetid }, (err, tweet) => {
+                        if (err)
+                            return res.status(400).send(err);
+                        if (tweet) {
+                            tweet.retweets = tweet.retweets + 1
+                            Tweet.updateOne({ _id: req.body.tweetid }, { retweets: tweet.retweets }, (err, data) => {
+                                if (err)
+                                    return res.status(400).send(err);
+                                if (data) {
+                                    return res.status(200).send('done')
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
+
+})
+//like route
+//like for tweet 
+router.post('/likes', async (req, res) => {
+    await User.findOne({ _id: req.body.userid }, (err, user) => {
+        if (err)
+            return res.status(400).send(err);
+        if (user) {
+            user.likes.push(req.body.tweetid)
+            User.updateOne({ _id: req.body.userid }, { likes: user.likes }, (err, updated) => {
+                if (err)
+                    return res.status(400).send(err);
+                if (updated) {
+                    Tweet.findOne({ _id: req.body.tweetid }, (err, tweet) => {
+                        if (err)
+                            return res.status(400).send(err);
+                        if (tweet) {
+                            tweet.likes = tweet.likes + 1
+                            Tweet.updateOne({ _id: req.body.tweetid }, { likes: tweet.likes }, (err, data) => {
+                                if (err)
+                                    return res.status(400).send(err);
+                                if (data) {
+                                    return res.status(200).send('liked')
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
+
+})
+//unlike for tweet 
+router.post('/unlike', async (req, res) => {
+    console.log(req.body)
+    await User.findOne({ _id: req.body.userid }, (err, user) => {
+        if (err)
+            return res.status(400).send(err);
+        if (user) {
+            let likes = user.likes.filter((element) => {
+                return element.toString() !== req.body.tweetid
+            })
+            User.updateOne({ _id: req.body.userid }, { likes: likes }, (err, updated) => {
+                if (err)
+                    return res.status(400).send(err);
+                if (updated) {
+                    Tweet.findOne({ _id: req.body.tweetid }, (err, tweet) => {
+                        if (err)
+                            return res.status(400).send(err);
+                        if (tweet) {
+                            tweet.likes = tweet.likes - 1
+                            Tweet.updateOne({ _id: req.body.tweetid }, { likes: tweet.likes }, (err, data) => {
                                 if (err)
                                     return res.status(400).send(err);
                                 if (data) {

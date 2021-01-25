@@ -24,12 +24,7 @@ const tweetSchema = mongoose.Schema({
     retweets: {
         type: Number
     },
-    // fav: [
-    //     {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: 'User',
-    //     }
-    // ],
+
     comments:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comments', 
