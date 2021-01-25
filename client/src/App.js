@@ -1,28 +1,42 @@
-import React,{useEffect} from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import ScrollableTabsButtonAuto from './Components/horizantalTab/horizantalTab'
+import Profile from "./Components/Profile/profile"
+
 import { loadUser } from './Redux/user/userAction'
+import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 import './App.css';
 
-const App = ({loadUser}) => {
+const App = ({ loadUser,isAuth }) => {
 
   useEffect(() => {
     loadUser()
-  },[])
+  }, [])
 
 
   return (
     <div className="App">
-      <ScrollableTabsButtonAuto />
+      <Switch>
+        <Route exact path="/" render={() => <ScrollableTabsButtonAuto />} />
+        <Route exact path="/profile" render={() =>
+          !isAuth
+            ? (<Redirect to='/' />)
+            : (<Profile />)} />
+      </Switch>
     </div>
   );
 }
 
 const mapDispatchToProps = (dispatch) => {
+  return {
+    loadUser: () => dispatch(loadUser())
+  }
+}
+const mapStateToProps =({user:{isAuth}})=>{
   return{
-    loadUser : () => dispatch(loadUser())
+    isAuth
   }
 }
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

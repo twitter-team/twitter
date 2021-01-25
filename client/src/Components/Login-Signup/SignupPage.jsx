@@ -24,25 +24,33 @@ class SignUp extends React.Component {
     
     signUpReq = (obj) => {
         // Simple POST request with a JSON body using fetch
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(obj)
-        };
-        fetch('http://localhost:5000/api/user/signup', requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data)
-               if(!data){
-                //    alert(data)
-                }else{
-                    localStorage.setItem('Authorization',data.token)
-                    this.props.handleClose()
-                    this.props.setUser(data.user)
-                    this.setState({ name: '',email: '',password: ''})
-                }
+        if(obj.password.length < 8 ){
+            alert("Password must be at least 8 characters")
+        }else{
 
-            })
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(obj)
+            };
+            fetch('http://localhost:5000/api/user/signup', requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    if(!data.token){
+                    alert("Email already exists")
+                    }else{
+                        localStorage.setItem('Authorization',data.token)
+                        this.props.handleClose()
+                        this.props.setUser(data.user)
+                        this.setState({ name: '',email: '',password: ''})
+                    }
+                })
+                .catch(err=> {
+                    alert("Email already exists")
+                })
+        }
+            
+           
     }
 
     signUp = (e) => {

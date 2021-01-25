@@ -32,9 +32,8 @@ class LogIn extends React.Component {
         fetch('http://localhost:5000/api/user/signin', requestOptions)
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
-               if(!data){
-                //    alert(data)
+                if(!data.token){
+                   alert("Invalid Credintials")
                 }else{
                     localStorage.setItem('Authorization',data.token)
                     this.props.handleClose()
@@ -43,6 +42,7 @@ class LogIn extends React.Component {
                 }
 
             })
+            .catch(err=> alert("Invalid Credintials"))
     }
 
     signUp = (e) => {

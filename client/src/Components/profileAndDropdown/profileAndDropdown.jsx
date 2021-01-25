@@ -4,6 +4,8 @@ import { connect } from "react-redux"
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
+import { Link } from 'react-router-dom';
+import ProfileImage from "../../assets/girl.jpg"
 
 const useStyles = makeStyles((theme) => ({
     purple: {
@@ -18,7 +20,9 @@ const ProfileAndDropDown = ({user}) => {
 
     return (
       <div style={{display:"flex",alignItems:"center"}}>
-          <Avatar className={classes.purple}>{user.name[0].toUpperCase()}</Avatar>
+        <Link to="/profile" style={{textDecoration:"none",cursor:"pointer"}}>
+          <Avatar className={classes.purple}><img style={{width:"50px",height:"40px"}} src={ProfileImage}/></Avatar>
+        </Link>
           <h4 >{user.name.toUpperCase()}</h4>
           <LongMenu/>
       </div>

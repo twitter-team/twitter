@@ -15,7 +15,7 @@ import Bookmarks from "../Bookmarks/bookmarks"
 import Home from "../Home/home"
 import Explore from "../Explore/explore"
 import "../Header/style.css"
-
+import { Link } from 'react-router-dom';
 
 
 function TabPanel(props) {
@@ -65,7 +65,7 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -73,10 +73,10 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
     return (
         <div className={classes.root} >
 
-            <AppBar position="static" color="default" style={{ maxHeight:"70px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                <div style={{display:"flex"}}>
-                <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
-                </div>
+            <AppBar position="static" color="default" style={{ maxHeight: "70px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <Link to="/" style={{cursor:"pointer"}}>
+                    <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
+                </Link>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -85,13 +85,13 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
                     variant="scrollable"
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
-                    style={{marginTop:"10px"}}
+                    style={{ marginTop: "10px" }}
                 >
 
                     <Tab label="Home" {...a11yProps(0)} />
                     <Tab label="Explore" {...a11yProps(1)} />
                     <Tab label="Bookmarks" {...a11yProps(2)} />
-                    
+
                 </Tabs>
                 <div className='header__taps'>
                     {
@@ -101,19 +101,19 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
                                 <h4 className='tap'><RegisterDialog /></h4>
                             </div>
                             :
-                            <ProfileAndDropDown/>
+                            <ProfileAndDropDown />
                     }
                 </div>
             </AppBar>
             <TabPanel value={value} index={0} >
-                <Home/>
-      </TabPanel>
+                <Home />
+            </TabPanel>
             <TabPanel value={value} index={1}>
-                <Explore/>
-      </TabPanel>
+                <Explore />
+            </TabPanel>
             <TabPanel value={value} index={2}>
-                <Bookmarks/>
-      </TabPanel>
+                <Bookmarks />
+            </TabPanel>
         </div>
     );
 }

@@ -9,7 +9,7 @@ import { logOut } from "../../Redux/user/userAction"
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import SettingsIcon from '@material-ui/icons/Settings';
-
+import { Link } from 'react-router-dom';
 
 
 const ITEM_HEIGHT = 54;
@@ -57,8 +57,9 @@ const LongMenu = function ({ logOut }) {
                     }
                 }}
             >
-
+                <Link to="/profile" style={{textDecoration:"none",cursor:"pointer"}}>
                 <MenuItem style={{padding:"0px" }} onClick={handleClose}> <AccountCircleIcon/><p style={{marginLeft:"5px"}}>My Profile</p></MenuItem>
+                </Link>
                 <MenuItem style={{padding:"0px" }} onClick={handleClose}><SupervisorAccountIcon/><p style={{marginLeft:"5px"}}>Group Chat</p></MenuItem>
                 <MenuItem style={{padding:"0px" }} onClick={handleClose}><SettingsIcon/><p style={{marginLeft:"5px"}}>Settings</p></MenuItem>
                 <MenuItem style={{ padding:"0px" , borderTop: "1px solid gray", color: "red" }} onClick={handleClickLogout}><ExitToAppIcon /><p style={{marginLeft:"5px"}}>  Log Out</p></MenuItem>
