@@ -59,25 +59,15 @@ export default function PrimarySearchAppBar() {
             <div className={classes.searchIcon}>
                 <SearchIcon />
             </div>
-            <InputBase
+            <TextField
+                id="standard-textarea"
+                // label="Multiline Placeholder"
                 placeholder="Search…"
-                classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-                style={{ width: "100%" }}
+                multiline
+                style={{ width: "100%",marginLeft:"50px",marginRight:"5px " }}
             />
-            {/* <TextField
-                id="standard-full-width"
-                style={{ margin: 8 }}
-                placeholder="Search…"
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                    shrink: true,
-                }}
-            /> */}
+            
+        
             <Button variant="contained" color="primary">
                 Search
                         </Button>

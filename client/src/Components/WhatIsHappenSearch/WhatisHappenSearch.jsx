@@ -2,10 +2,11 @@ import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles((theme) => ({
-  
+
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -47,21 +48,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function WhatisHappenSearch() {
   const classes = useStyles();
-  
-  return (   
-          <div className={classes.search } style={{backgroundColor:"white",width:"100%",height:"120px"}}>
-            {/* <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div> */}
-            <InputBase
-              placeholder="What's happening..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          
+
+  return (
+    <div className={classes.search} style={{ width: "100%", height: "120px" }}>
+      <TextField
+        id="outlined-multiline-static"
+        label="What's happening..."
+        multiline
+        rows={4}
+        variant="outlined"
+        style={{ width: "100%" }}
+      />
+    </div>
+
   );
 }
