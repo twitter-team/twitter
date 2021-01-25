@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SearcComp from "../searchComp/SearchComp"
+import TweetBody from "../TweetBody/TweetBody"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme,h) => ({
+const useStyles = makeStyles((theme, h) => ({
   root: {
     flexGrow: 1,
     backgroundColor: "white",
@@ -52,8 +53,8 @@ const useStyles = makeStyles((theme,h) => ({
   },
 }));
 
-const VerticalTabs=function ({items}) {
-  const classes = useStyles(0,250);
+const VerticalTabs = function ({ items }) {
+  const classes = useStyles(0, 250);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -75,40 +76,48 @@ const VerticalTabs=function ({items}) {
         <Tab label={items[2]} {...a11yProps(2)} />
         <Tab label={items[3]} {...a11yProps(3)} />
       </Tabs>
-      <TabPanel value={value} index={0} style={{width:"100%"}}>
-        {console.log("ssssssss",items[0])}
+      <TabPanel value={value} index={0} style={{ width: "100%" }}>
         {
-          items[0]==="top"?
-          <SearcComp/>
-          :<></>
+          items[0] === "top" ?
+            <div>
+              <SearcComp />
+              <TweetBody />
+            </div>
+            : <TweetBody />
         }
-        Item One
+
       </TabPanel>
-      <TabPanel value={value} index={1} style={{width:"100%"}}>
-      {
-          items[0]==="top"?
-          <SearcComp/>
-          :<></>
+      <TabPanel value={value} index={1} style={{ width: "100%" }}>
+        {
+          items[0] === "top" ?
+            <div>
+              <SearcComp />
+              <TweetBody />
+            </div>
+            : <TweetBody />
         }
-        Item Two
       </TabPanel>
-      <TabPanel value={value} index={2} style={{width:"100%"}}>
-      {
-          items[0]==="top"?
-          <SearcComp/>
-          :<></>
+      <TabPanel value={value} index={2} style={{ width: "100%" }}>
+        {
+          items[0] === "top" ?
+            <div>
+              <SearcComp />
+              <TweetBody />
+            </div>
+            : <TweetBody />
         }
-        Item Three
       </TabPanel>
-      <TabPanel value={value} index={3} style={{width:"100%"}}>
-      {
-          items[0]==="top"?
-          <SearcComp/>
-          :<></>
+      <TabPanel value={value} index={3} style={{ width: "100%" }}>
+        {
+          items[0] === "top" ?
+            <div>
+              <SearcComp />
+              <TweetBody />
+            </div>
+            : <TweetBody />
         }
-        Item Four
       </TabPanel>
     </div>
   );
 }
-export default  VerticalTabs
+export default VerticalTabs

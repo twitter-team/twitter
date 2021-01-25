@@ -34,7 +34,7 @@ export default function CustomizedInputBase() {
 
       <InputBase
         className={classes.input}
-        placeholder="Search Google Maps"
+        placeholder="Comment here....."
         inputProps={{ 'aria-label': 'search google maps' }}
       />
       <Divider className={classes.divider} orientation="vertical" />

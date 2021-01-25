@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import ProfileAndDropDown from "../profileAndDropdown/profileAndDropdown"
 
 import "../Header/style.css"
-
+import "./navBar.css"
 
 
 function TabPanel(props) {
@@ -52,7 +52,7 @@ const NavBar = function () {
     return (
         <div className={classes.root} >
 
-            <AppBar position="static" color="default" style={{ maxHeight: "70px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <AppBar position="static" color="default" className="nav" >
                 <Link to="/" style={{ cursor: "pointer" }}>
                     <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
                 </Link>

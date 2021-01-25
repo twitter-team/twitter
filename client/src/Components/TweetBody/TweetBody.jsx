@@ -10,6 +10,7 @@ import LoopIcon from '@material-ui/icons/Loop';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import SearchBar from "../searchBarComments/searchBarComments"
+
 const TweetBody = ({ user }) => {
     return (
         <div style={{ marginTop: "20px", marginLeft: "10px", textAlign: "start", boxShadow: "7px 10px 87px 16px rgba(0,0,0,0.1)", padding: "20px", paddingTop: "10px", borderRadius: "20px", backgroundColor: "#f5f8fa" }}>
