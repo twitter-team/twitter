@@ -73,22 +73,19 @@ router.post('/signin', async (req, res) => {
 //geting the userinfo 
 router.post('/profile', async (req, res) => {
     console.log(req.body.userid)
-    await User.findOne({ _id: req.body.userid }).populate("bookmarks").populate("following").populate("followers").populate("tweets").populate("retweets").populate("likes")
-        .exec((err, user) => {
+    await User.findOne({ _id: req.body.userid }).populate("bookmarks").populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate("retweets").populate("likes")
+        .exec(async (err, user) => {
             if (err) return res.status(404).json({ success: false })
-            console.log(user, 'user')
             res.json(user)
         })
 })
 
-//update fo each one postreq() x10
-//the user can't make anyone not to unfollow him but can unfollow / follow anyone 
-//if i want to follow someone i need both of the users id 
+//follow
 router.post('/follow', async (req, res) => {
     //the id of the one that i am going to follow 
-    console.log(req.body.userid)
+    // console.log(req.body.userid)
     //the id of the one who is going to follow the other 
-    console.log(req.body.meid)
+    // console.log(req.body.meid)
     await User.findOne({ _id: req.body.userid }, (err, user) => {
         if (err)
             return res.status(400).send(err);
@@ -121,9 +118,9 @@ router.post('/follow', async (req, res) => {
 //the unfollow route
 router.post('/unfollow', async (req, res) => {
     //the id of the one that i am going to follow 
-    console.log(req.body.userid)
+    // console.log(req.body.userid)
     //the id of the one who is going to follow the other 
-    console.log(req.body.meid)
+    // console.log(req.body.meid)
     //find the user
     await User.findOne({ _id: req.body.userid }, (err, user) => {
         if (err)
@@ -232,9 +229,9 @@ router.post('/retweet', async (req, res) => {
         if (err)
             return res.status(400).send(err);
         if (user) {
-            console.log('befor',user.retweets)
+            console.log('befor', user.retweets)
             user.retweets.push(req.body.tweetid)
-            console.log('after',user.retweets)
+            console.log('after', user.retweets)
             User.updateOne({ _id: req.body.userid }, { retweets: user.retweets }, (err, updated) => {
                 if (err)
                     return res.status(400).send(err);

@@ -17,7 +17,6 @@ const commentsSchema = mongoose.Schema({
     img:{
         type:String
     }
-   
 }, { timestamps: true })
 
 

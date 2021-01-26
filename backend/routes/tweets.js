@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Tweet = require('../models/Tweets')
-const Comments = require('../models/Comments')
 const User = require('../models/User')
 
 
