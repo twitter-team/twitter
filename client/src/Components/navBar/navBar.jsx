@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import ProfileAndDropDown from "../profileAndDropdown/profileAndDropdown"
 
 import "../Header/style.css"
-
+import "./navBar.css"
 
 
 function TabPanel(props) {
@@ -44,6 +44,12 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: theme.palette.background.paper,
     },
+    nav:{
+        maxHeight: "70px",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    }
 }));
 
 const NavBar = function () {
@@ -52,7 +58,7 @@ const NavBar = function () {
     return (
         <div className={classes.root} >
 
-            <AppBar position="static" color="default" style={{ maxHeight: "70px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+            <AppBar position="static" color="default" className={classes.nav}  >
                 <Link to="/" style={{ cursor: "pointer" }}>
                     <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
                 </Link>

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
 import { Link } from 'react-router-dom';
 import ProfileImage from "../../assets/girl.jpg"
-
+import "./profileAndDropdown.css"
 const useStyles = makeStyles((theme) => ({
     purple: {
       color: theme.palette.getContrastText(deepPurple[400]),
@@ -19,9 +19,9 @@ const ProfileAndDropDown = ({user}) => {
     const classes = useStyles();
 
     return (
-      <div style={{display:"flex",alignItems:"center"}}>
+      <div className="profile-drop">
         <Link to="/profile" style={{textDecoration:"none",cursor:"pointer"}}>
-          <Avatar className={classes.purple}><img style={{width:"50px",height:"40px"}} src={ProfileImage}/></Avatar>
+          <Avatar className={classes.purple}><img className="drop__image" src={ProfileImage}/></Avatar>
         </Link>
           <h4 >{user.name.toUpperCase()}</h4>
           <LongMenu/>

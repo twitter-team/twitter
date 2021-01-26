@@ -1,0 +1,22 @@
+.trends{
+    margin-left:10px;
+    text-align: start;
+    box-shadow:7px 10px 87px 16px rgba(0,0,0,0.1);
+    padding: 20px;
+    padding-top:10px;
+    border-radius: 20px;
+    background-color: #f5f8fa
+}
+.trends_div > h3{
+    border-bottom: 1px solid gray
+}
+.trends_div >ul {
+    padding: 0px;
+    cursor:pointer
+}
+.trends_div >ul >h4 {
+    margin: 0px
+}
+.trends_div >ul >small {
+    color: gray
+}

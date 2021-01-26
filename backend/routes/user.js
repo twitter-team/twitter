@@ -178,7 +178,7 @@ router.post('/addBookmark', async (req, res) => {
                                 if (err)
                                     return res.status(400).send(err);
                                 if (data) {
-                                    return res.status(200).send('done')
+                                    return res.status(200).send('added')
                                 }
                             })
                         }
@@ -191,7 +191,6 @@ router.post('/addBookmark', async (req, res) => {
 })
 //delete 
 router.post('/deleteBookmark', async (req, res) => {
-    console.log(req.body)
     await User.findOne({ _id: req.body.userid }, (err, user) => {
         if (err)
             return res.status(400).send(err);
@@ -212,7 +211,7 @@ router.post('/deleteBookmark', async (req, res) => {
                                 if (err)
                                     return res.status(400).send(err);
                                 if (data) {
-                                    return res.status(200).send('done')
+                                    return res.status(200).send('deleted from book mark')
                                 }
                             })
                         }
@@ -229,9 +228,9 @@ router.post('/retweet', async (req, res) => {
         if (err)
             return res.status(400).send(err);
         if (user) {
-            console.log('befor', user.retweets)
+            // console.log('befor', user.retweets)
             user.retweets.push(req.body.tweetid)
-            console.log('after', user.retweets)
+            // console.log('after', user.retweets)
             User.updateOne({ _id: req.body.userid }, { retweets: user.retweets }, (err, updated) => {
                 if (err)
                     return res.status(400).send(err);
@@ -245,7 +244,7 @@ router.post('/retweet', async (req, res) => {
                                 if (err)
                                     return res.status(400).send(err);
                                 if (data) {
-                                    return res.status(200).send('done')
+                                    return res.status(200).send('retweeted')
                                 }
                             })
                         }
@@ -311,7 +310,7 @@ router.post('/unlike', async (req, res) => {
                                 if (err)
                                     return res.status(400).send(err);
                                 if (data) {
-                                    return res.status(200).send('done')
+                                    return res.status(200).send('unliked')
                                 }
                             })
                         }

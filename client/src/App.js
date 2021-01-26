@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import ScrollableTabsButtonAuto from './Components/horizantalTab/horizantalTab'
 import Profile from "./Components/Profile/profile"
-
+import Chat from "../src/Components/Chat/Chat"
 import { loadUser } from './Redux/user/userAction'
 import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 
@@ -19,6 +19,10 @@ const App = ({ loadUser,isAuth }) => {
     <div className="App">
       <Switch>
         <Route exact path="/" render={() => <ScrollableTabsButtonAuto />} />
+        <Route exact path="/chat" render={() =>
+          !isAuth
+            ? (<Redirect to='/' />)
+            : (<Chat />)} />
         <Route exact path="/profile" render={() =>
           !isAuth
             ? (<Redirect to='/' />)

@@ -1,0 +1,13 @@
+.homepage{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+}
+.hamepage__left{
+    width:70%;
+}
+.hamepage__right{
+    width:30%;
+}

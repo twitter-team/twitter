@@ -59,6 +59,15 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: theme.palette.background.paper,
     },
+    navBar:{
+        maxHeight: "70px",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    navBar__logo:{
+        cursor:"pointer"
+    }
 }));
 
 const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
@@ -73,8 +82,8 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
     return (
         <div className={classes.root} >
 
-            <AppBar position="static" color="default" style={{ maxHeight: "70px", display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-            <Link to="/" style={{cursor:"pointer"}}>
+            <AppBar position="static" color="default" className={classes.navBar} >
+            <Link to="/" className={classes.navBar__logo}>
                     <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
                 </Link>
                 <Tabs

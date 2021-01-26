@@ -6,7 +6,7 @@ const Tweet = require('../models/Tweets')
 
 //saving the tweet in db
 router.post('/comment', async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const comment = new Comments({
         userid: req.body.userid,
         comment: req.body.comment,
@@ -57,7 +57,7 @@ router.post('/commentunlike', async (req, res) => {
                 if (err)
                     return res.status(400).send(err);
                 if (data) {
-                    return res.status(200).send('liked')
+                    return res.status(200).send('unliked')
                 }
             })
         }

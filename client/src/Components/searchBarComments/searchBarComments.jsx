@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
+import ImageIcon from '@material-ui/icons/Image';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,12 +34,12 @@ export default function CustomizedInputBase() {
 
       <InputBase
         className={classes.input}
-        placeholder="Search..."
+        placeholder="Comment here....."
         inputProps={{ 'aria-label': 'search google maps' }}
       />
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton color="primary" className={classes.iconButton} aria-label="directions">
-        <SearchIcon />
+        <ImageIcon />
       </IconButton>
     </Paper>
   );
