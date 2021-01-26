@@ -1,6 +1,6 @@
-.nav{
+.navB{
     max-height: 70px;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     justify-content: space-between;
 }
