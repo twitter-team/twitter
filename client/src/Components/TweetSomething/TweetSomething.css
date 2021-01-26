@@ -1,0 +1,41 @@
+.tweet-something{
+    margin-left: 10px;
+    text-align: start;
+    box-shadow: 7px 10px 87px 16px rgba(0,0,0,0.1);
+    padding: 1rem;
+    padding-top: 1rem;
+    border-radius: 1rem;
+    background-color: #f5f8fa
+}
+.tweet-something__text{
+    border-bottom: 1px solid gray
+}
+.tweet-something__body{
+    display:flex
+}
+.avatar__image{
+    width: 50px ;
+    height: 40px;
+}
+.text__input{
+    width: 90% 
+}
+.last__line{
+    margin-top: 5px;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%
+}
+.last__center{
+    display: flex;
+    align-items: center
+}
+.everyone{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    color: blue
+}

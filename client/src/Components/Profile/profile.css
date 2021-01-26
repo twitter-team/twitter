@@ -20,21 +20,20 @@
     width:80%;
     height:50%;
     position: absolute;
-    top: 230px;
+    top: 14rem;
     background-color: white;
     cursor: pointer;
     font-family: 'Titillium Web', sans-serif;
     z-index: 1;
     border-radius: 10px;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-
 }
 .profile__picture{
     width:13%;
     height:80%;
     position: absolute;
-    top: -50px;
-    left:50px;
+    top: -30%;
+    left:5%;
     font-weight: bold;
     font-size: 25px;
     background-image: url("../../assets/girl.jpg");
@@ -49,17 +48,54 @@
 }
 .profile__right{
     padding-right:20px;
-    padding-left:200px;
+    padding-left:19%;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 .profile__follower{
     display:flex;
-    margin-left:-250px
+    margin-left:-25%
 }
 .profile__about{
     color:gray;
     text-align:left;
-    padding-left:200px
+    padding-left:19%;
 }
+@media (max-width: 900px)  {
+    .backprofile__picture{
+        height: 200px;
+    }
+    .homepage__text{
+        width:60%;
+        height:70%;
+        top: 6rem;
+    }
+    .profile__picture{
+        width:35%;
+        height:70%;
+        position: absolute;
+        top: -40%;
+        left:32%;
+    }
+    .profile__right{
+        padding-right:0px;
+        padding-left:0%;
+        flex-direction: column;
+        margin-top: 2%;
+        height: 100%;
+        justify-content:center;
+    }
+    .profile__right >h3{
+        margin: 0px;
+    }
+    .profile__about{
+        display: none;
+    }
+    .profile__follower{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left:20%;
+    }
+  }
