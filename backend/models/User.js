@@ -16,7 +16,40 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    profilepic:{
+        type:String
+    },
+    backgroundpic:{
+        type:String
+    },
+    bio:{
+        type:String
+    },
+    bookmarks:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
+    }],
+    following:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
+    followers:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
+    tweets:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
+    }],
+    retweets:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
+    }],
+    likes:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tweet',
+    }]
 
 }, { timestamps: true })
 

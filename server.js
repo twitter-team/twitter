@@ -4,7 +4,6 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require("dotenv")
 dotenv.config()
-
 mongoose.connect(process.env.DB_CONNECT,
     {
       useNewUrlParser: true, useUnifiedTopology: true,
@@ -21,6 +20,8 @@ app.use(cors())
 
 
 app.use('/api/user', require('./backend/routes/user'))
+app.use('/api/tweets', require('./backend/routes/tweets'))
+app.use('/api/comments', require('./backend/routes/comments'))
 
 
 

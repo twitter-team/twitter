@@ -23,6 +23,7 @@ const TweetBody = ({ user }) => {
                 <Link to="/profile" className="twet__top__image">
                     <Avatar ><img className=" avatar__image" src={ProfileImage} /></Avatar>
                 </Link>
+
                 <div className='top__date'>
                     <h4 style={{ margin: "0px" }} >{user.name.toUpperCase()}</h4>
                     <h5 style={{ margin: "0px", color: "gray" }}>24 Augest 20:34</h5>
