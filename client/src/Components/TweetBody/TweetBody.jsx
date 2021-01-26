@@ -13,12 +13,12 @@ import SearchBar from "../searchBarComments/searchBarComments"
 
 const TweetBody = ({ user }) => {
     return (
-        <div style={{ marginTop: "20px", marginLeft: "10px", textAlign: "start", boxShadow: "7px 10px 87px 16px rgba(0,0,0,0.1)", padding: "20px", paddingTop: "10px", borderRadius: "20px", backgroundColor: "#f5f8fa" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <Link to="/profile" style={{ textDecoration: "none", cursor: "pointer" }}>
-                    <Avatar ><img style={{ width: "50px", height: "40px" }} src={ProfileImage} /></Avatar>
+        <div className="tweet-body">
+            <div className="tweet__top" >
+                <Link to="/profile" className="twet__top__image">
+                    <Avatar ><img className=" avatar__image" src={ProfileImage} /></Avatar>
                 </Link>
-                <div style={{ marginLeft: "10px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <div className='top__date'>
                     <h4 style={{ margin: "0px" }} >{user.name.toUpperCase()}</h4>
                     <h5 style={{ margin: "0px", color: "gray" }}>24 Augest 20:34</h5>
                 </div>
@@ -28,52 +28,52 @@ const TweetBody = ({ user }) => {
             </h4>
             <img className="tweet__image" src={TweetBodyImage} />
 
-            <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", color: "gray" }}>
+            <div className="comments-saves ">
                 <h5 style={{ marginRight: "10px" }}>234 comments</h5>
                 <h5>234 saves</h5>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: "gray", borderTop: "1px solid gray", borderBottom: "1px solid gray" }}>
-                <div style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+            <div className='comments-sec'>
+                <div>
                     <ChatBubbleOutlineIcon />
                     <h4 style={{ marginLeft: "5px", alignItems: "center" }}>Comment</h4>
                 </div>
-                <div style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+                <div>
                     <LoopIcon />
                     <h4 style={{ marginLeft: "5px" }}>Retweet</h4>
                 </div>
-                <div style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+                <div>
                     <FavoriteBorderIcon />
                     <h4 style={{ marginLeft: "5px" }}>Like</h4>
                 </div>
-                <div style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+                <div>
                     <BookmarkBorderIcon />
                     <h4 style={{ marginLeft: "5px" }}>Save</h4>
                 </div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", width: "100%", marginTop: "10px" }}>
-                <Link to="/profile" style={{ textDecoration: "none", cursor: "pointer", marginRight: "5px" }}>
-                    <Avatar ><img style={{ width: "50px", height: "40px" }} src={ProfileImage} /></Avatar>
+            <div className="profile-comment" >
+                <Link to="/profile" className="profile-link">
+                    <Avatar ><img className="avatar__image" src={ProfileImage} /></Avatar>
                 </Link>
                 <SearchBar />
             </div>
-            <div style={{ display: "flex" , marginTop: "15px"}}>
-                <Link to="/profile" style={{ textDecoration: "none", cursor: "pointer" }}>
-                    <Avatar ><img style={{ width: "50px", height: "40px" }} src={ProfileImage} /></Avatar>
+            <div className="profile-othercomment">
+                <Link to="/profile" className="profile-link">
+                    <Avatar ><img className="avatar__image" src={ProfileImage} /></Avatar>
                 </Link>
                 <div style={{ marginLeft: "10px" }}>
 
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div className="tweet__top" >
                         <h4 style={{ margin: "0px" }} >{user.name.toUpperCase()}</h4>
                         <h5 style={{ margin: "0px", color: "gray", marginLeft: "10px" }}>24 Augest 20:34</h5>
                     </div>
-                    <h4 style={{ margin: "0px",marginLeft:"15px", color: "rgb(68, 68, 67)" }} >whatever you like</h4>
-                    <div style={{display:"flex",color:"gray"}}>
+                    <h4 className="actual-comment" >whatever you like</h4>
+                    <div className="like-comment">
 
-                    <div style={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
-                        <FavoriteBorderIcon />
-                        <h4 style={{ marginLeft: "5px" }}>Like</h4>
-                    </div>
-                    <h4 style={{ marginLeft: "15px" }}> 255 Likes</h4>
+                        <div className="like-icon">
+                            <FavoriteBorderIcon />
+                            <h4 style={{ marginLeft: "5px" }}>Like</h4>
+                        </div>
+                        <h4 style={{ marginLeft: "15px" }}> 255 Likes</h4>
                     </div>
                 </div>
             </div>
