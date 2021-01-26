@@ -11,3 +11,13 @@
 .hamepage__right{
     width:30%;
 }
+
+  @media (max-width: 900px)  {
+    .hamepage__left {
+        width:100%;
+    }
+    .hamepage__right{
+        display: none;
+    }
+
+  }

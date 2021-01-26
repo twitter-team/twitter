@@ -10,8 +10,13 @@ import LoopIcon from '@material-ui/icons/Loop';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import SearchBar from "../searchBarComments/searchBarComments"
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+
 
 const TweetBody = ({ user }) => {
+    const isActive=useMediaQuery('(max-width:900px)')
+
     return (
         <div className="tweet-body">
             <div className="tweet__top" >
@@ -35,19 +40,42 @@ const TweetBody = ({ user }) => {
             <div className='comments-sec'>
                 <div>
                     <ChatBubbleOutlineIcon />
-                    <h4 style={{ marginLeft: "5px", alignItems: "center" }}>Comment</h4>
+                    {
+                        !isActive?
+                        <h4 style={{ marginLeft: "0.5rem", alignItems: "center" }}>Comment</h4>
+                        :
+                        <></>
+                    }
                 </div>
                 <div>
                     <LoopIcon />
-                    <h4 style={{ marginLeft: "5px" }}>Retweet</h4>
+                    {
+                        !isActive?
+                        <h4 style={{ marginLeft: "0.5rem" }}>Retweet</h4>
+                        :
+                        <></>
+                    }
+                    
                 </div>
                 <div>
                     <FavoriteBorderIcon />
-                    <h4 style={{ marginLeft: "5px" }}>Like</h4>
+                    {
+                        !isActive?
+                        <h4 style={{ marginLeft: "0.5rem" }}>Like</h4>
+                        :
+                        <></>
+                    }
+                   
                 </div>
                 <div>
                     <BookmarkBorderIcon />
-                    <h4 style={{ marginLeft: "5px" }}>Save</h4>
+                    {
+                        !isActive?
+                        <h4 style={{ marginLeft: "0.5rem" }}>Save</h4>
+                        :
+                        <></>
+                    }
+                    
                 </div>
             </div>
             <div className="profile-comment" >
@@ -60,20 +88,20 @@ const TweetBody = ({ user }) => {
                 <Link to="/profile" className="profile-link">
                     <Avatar ><img className="avatar__image" src={ProfileImage} /></Avatar>
                 </Link>
-                <div style={{ marginLeft: "10px" }}>
+                <div style={{ marginLeft: "1rem" }}>
 
                     <div className="tweet__top" >
                         <h4 style={{ margin: "0px" }} >{user.name.toUpperCase()}</h4>
-                        <h5 style={{ margin: "0px", color: "gray", marginLeft: "10px" }}>24 Augest 20:34</h5>
+                        <h5 style={{ margin: "0px", color: "gray", marginLeft: "1rem" }}>24 Augest 20:34</h5>
                     </div>
                     <h4 className="actual-comment" >whatever you like</h4>
                     <div className="like-comment">
 
                         <div className="like-icon">
                             <FavoriteBorderIcon />
-                            <h4 style={{ marginLeft: "5px" }}>Like</h4>
+                            <h4 style={{ marginLeft: "0.5rem" }}>Like</h4>
                         </div>
-                        <h4 style={{ marginLeft: "15px" }}> 255 Likes</h4>
+                        <h4 style={{ marginLeft: "1rem" }}> 255 Likes</h4>
                     </div>
                 </div>
             </div>

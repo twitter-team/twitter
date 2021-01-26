@@ -2,9 +2,9 @@
     margin-left: 10px;
     text-align: start;
     box-shadow: 7px 10px 87px 16px rgba(0,0,0,0.1);
-    padding: 20px;
-    padding-top: 10px;
-    border-radius: 20px;
+    padding: 1rem;
+    padding-top: 1rem;
+    border-radius: 1rem;
     background-color: #f5f8fa
 }
 .tweet-something__text{
@@ -22,7 +22,7 @@
 }
 .last__line{
     margin-top: 5px;
-    margin-left: 20px;
+    margin-left: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,6 +36,6 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 0.5rem;
     color: blue
 }
