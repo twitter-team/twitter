@@ -57,12 +57,14 @@ const LongMenu = function ({ logOut }) {
                     }
                 }}
             >
-                <Link to="/profile" style={{textDecoration:"none",cursor:"pointer"}}>
-                <MenuItem style={{padding:"0px" }} onClick={handleClose}> <AccountCircleIcon/><p style={{marginLeft:"5px"}}>My Profile</p></MenuItem>
+                <Link to="/profile" style={{ textDecoration: "none", cursor: "pointer" }}>
+                    <MenuItem style={{ padding: "0px" }} onClick={handleClose}> <AccountCircleIcon /><p style={{ marginLeft: "5px" }}>My Profile</p></MenuItem>
                 </Link>
-                <MenuItem style={{padding:"0px" }} onClick={handleClose}><SupervisorAccountIcon/><p style={{marginLeft:"5px"}}>Group Chat</p></MenuItem>
-                <MenuItem style={{padding:"0px" }} onClick={handleClose}><SettingsIcon/><p style={{marginLeft:"5px"}}>Settings</p></MenuItem>
-                <MenuItem style={{ padding:"0px" , borderTop: "1px solid gray", color: "red" }} onClick={handleClickLogout}><ExitToAppIcon /><p style={{marginLeft:"5px"}}>  Log Out</p></MenuItem>
+                <Link to="/chat" style={{ textDecoration: "none", cursor: "pointer" }}>
+                    <MenuItem style={{ padding: "0px" }} onClick={handleClose}><SupervisorAccountIcon /><p style={{ marginLeft: "5px" }}>Group Chat</p></MenuItem>
+                </Link>
+                <MenuItem style={{ padding: "0px" }} onClick={handleClose}><SettingsIcon /><p style={{ marginLeft: "5px" }}>Settings</p></MenuItem>
+                <MenuItem style={{ padding: "0px", borderTop: "1px solid gray", color: "red" }} onClick={handleClickLogout}><ExitToAppIcon /><p style={{ marginLeft: "5px" }}>  Log Out</p></MenuItem>
             </Menu>
         </div>
     );
