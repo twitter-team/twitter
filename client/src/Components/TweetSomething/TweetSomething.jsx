@@ -7,7 +7,7 @@ import PublicIcon from '@material-ui/icons/Public';
 import Button from '@material-ui/core/Button';
 import "./TweetSomething.css"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import CloudImage from "../uploadImage/uploadImage"
 const TweetSomething = () => {
     const isActive=useMediaQuery('(max-width:900px)')
 
@@ -20,7 +20,8 @@ const TweetSomething = () => {
                     <WhatisHappenSearch />
                     <div className='last__line'>
                         <div className='last__center'>
-                            <ImageIcon color="primary" />
+                            <CloudImage/>
+                            {/* <ImageIcon color="primary" /> */}
                             <div className='everyone'>
                                 <PublicIcon color="primary" />
                                 {
