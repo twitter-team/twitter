@@ -1,0 +1,21 @@
+.welcome{
+    height: 100vh;
+    width: 100vw;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(245, 245, 245, .90);
+    justify-content: space-between;
+    /* background-image: url('https://www.bundaberg.qld.gov.au/bundaberg-corporate/images/Diverse_community_group_holding_hands_web.jpg');
+    background-repeat: no-repeat;
+    background-size:  cover;
+    background-position: center;  */
+
+}
+.tweeter_logo{
+    padding-top: 10%;
+    width: 20rem;
+    object-fit: contain;
+}
+h2{
+    color: rgb(34, 129, 207);
+}

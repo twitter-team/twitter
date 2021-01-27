@@ -20,14 +20,18 @@ const App = ({ loadUser,isAuth }) => {
     <div className="App">
       <Switch>
         <Route exact path="/" render={() => <ScrollableTabsButtonAuto />} />
-        <Route exact path="/welcome" render={() => <Welcome />} />
+        <Route exact path="/welcome" render={() => 
+        isAuth
+        ? (<Redirect to='/' />)
+        : (<Welcome />)} />
+        
         <Route exact path="/chat" render={() =>
           !isAuth
-            ? (<Redirect to='/' />)
+            ? (<Redirect to='/welcome' />)
             : (<Chat />)} />
         <Route exact path="/profile" render={() =>
           !isAuth
-            ? (<Redirect to='/' />)
+            ? (<Redirect to='/welcome' />)
             : (<Profile />)} />
       </Switch>
     </div>
