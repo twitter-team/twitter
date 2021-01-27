@@ -32,7 +32,7 @@ router.post('/tweet', async (req, res) => {
 })
 //retriving all the tweets
 router.post('/tweets', async (req, res) => {
-  const tweets= await Tweet.find().populate('userid')
+  const tweets= await Tweet.find().populate('userid').populate("comments")
   res.send(tweets)
 })
 

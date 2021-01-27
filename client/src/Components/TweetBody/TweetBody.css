@@ -66,12 +66,13 @@
 }
 .profile-othercomment{
     display: flex ;
-    margin-top: 15px
+    margin-top: 15px;
+   
 }
 .actual-comment{
     margin: 0px;
     margin-left:15px;
-    color: rgb(68, 68, 67)
+    color: rgb(68, 68, 67);
 }
 .like-comment{
     display:flex;

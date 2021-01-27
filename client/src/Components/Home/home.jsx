@@ -12,7 +12,8 @@ const Home =({user})=>{
             <div className="hamepage__left">
             <TweetSomething/>
             {
-                user&& user.tweets.map(tweet=>{
+                user&& user.tweets.reverse().map(tweet=>{
+                    
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )

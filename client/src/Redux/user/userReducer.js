@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     token: localStorage.getItem('Authorization'),
     loading: true,
     isAuth: false,
-    user: null
+    user: null,
+    reloadme:false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -30,6 +31,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 isAuth: false,
                 user: null
+            };
+            case UserTypes.RELOAD:
+            return {
+                ...state,
+                reloadme:!state.reloadme
             }
         default:
             return state;
