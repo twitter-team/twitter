@@ -136,7 +136,7 @@ const ScrollableTabsButtonAuto = function ({ isAuth}) {
                         !isAuth ?
                             <div style={{ display: "flex" }}>
                                 <h4 className='tap'><LogInDialog /></h4>
-                                <h4 className='tap'><RegisterDialog /></h4>
+                                <h4 className='tap'><RegisterDialog/></h4>
                             </div>
                             :
                             <ProfileAndDropDown />

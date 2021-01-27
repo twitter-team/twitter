@@ -35,7 +35,7 @@ const TweetSomething = ({user}) => {
         <div className="tweet-something">
             <h3 className='tweet-something__text'>Tweet Something </h3>
             <div className='tweet-something__body' >
-                <Avatar ><img className='avatar__image'  src={user.profilepic} /></Avatar>
+                <Avatar ><img className='avatar__image'  src={user&& user.profilepic} /></Avatar>
                 <div className='text__input'>
                     <WhatisHappenSearch handleInputChange={handleInputChange} inputVal={input} />
                     <div className='last__line'>
