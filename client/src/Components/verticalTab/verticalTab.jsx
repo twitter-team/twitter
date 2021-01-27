@@ -96,7 +96,7 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user.tweets.map(tweet=>{
+                user && user.tweets.map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
@@ -104,7 +104,7 @@ const VerticalTabs = function ({ items,user }) {
             }
               
             </div>
-            :user.bookmarks.map(tweet=>{
+            :user && user.bookmarks.map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
@@ -119,14 +119,14 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user.tweets.map(tweet=>{
+                user && user.tweets.map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
                 })
             }
             </div>
-            :user.tweets.map(tweet=>{
+            :user && user.tweets.map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
@@ -140,14 +140,14 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user.tweets.map(tweet=>{
+                user && user.tweets.map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
                 })
             }
             </div>
-            :user.tweets.map(tweet=>{
+            :user && user.tweets.map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
@@ -161,14 +161,14 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user.tweets.map(tweet=>{
+                user && user.tweets.map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
                 })
             }
             </div>
-            :user.likes.map(tweet=>{
+            :user && user.likes.map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
