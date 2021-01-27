@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { connect } from "react-redux"
 import RegisterDialog from "../Header/registerDialog"
@@ -67,13 +68,18 @@ const useStyles = makeStyles((theme) => ({
     },
     navBar__logo:{
         cursor:"pointer"
-    }
+    },
+    stickToBottom: {
+        width: '100%',
+        position: 'fixed',
+        bottom: 0,
+      },
 }));
 
-const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
+const ScrollableTabsButtonAuto = function ({ isAuth}) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-
+    const isActive=useMediaQuery('(max-width:900px)')
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -86,6 +92,8 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
             <Link to="/" className={classes.navBar__logo}>
                     <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
                 </Link>
+                {
+                    !isActive?
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -94,7 +102,7 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
                     variant="scrollable"
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
-                    style={{ marginTop: "10px" }}
+                    style={{ marginTop: "10px",display: "flex",flexDirection: "row",justifyContent: "space-between" }}
                 >
 
                     <Tab label="Home" {...a11yProps(0)} />
@@ -102,6 +110,27 @@ const ScrollableTabsButtonAuto = function ({ isAuth, logOut }) {
                     <Tab label="Bookmarks" {...a11yProps(2)} />
 
                 </Tabs>
+                :
+                <AppBar position="static" color="default" className={classes.stickToBottom} >
+                    <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    aria-label="scrollable auto tabs example"
+                    style={{marginTop: "10px" }}
+                    
+                >
+
+                    <Tab label="Home" {...a11yProps(0)} style={{width:"33%"}}/>
+                    <Tab label="Explore" {...a11yProps(1)} style={{width:"33%"}} />
+                    <Tab label="Bookmarks" {...a11yProps(2)} style={{width:"33%"}} />
+
+                </Tabs>
+                    </AppBar>
+                }
                 <div className='header__taps'>
                     {
                         !isAuth ?

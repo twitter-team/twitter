@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SearcComp from "../searchComp/SearchComp"
 import TweetBody from "../TweetBody/TweetBody"
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,18 +52,27 @@ const useStyles = makeStyles((theme, h) => ({
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
   },
+  active: {
+    flexGrow: 1,
+    backgroundColor: "white",
+    display: 'flex',
+    flexDirection:"column",
+    alignItems:"center",
+    height: h,
+  }
 }));
 
 const VerticalTabs = function ({ items }) {
   const classes = useStyles(0, 250);
   const [value, setValue] = React.useState(0);
+  const isActive=useMediaQuery('(max-width:900px)')
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <div className={classes.root}>
+    <div className={`${!isActive?classes.root:classes.active}`}>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -70,6 +80,9 @@ const VerticalTabs = function ({ items }) {
         onChange={handleChange}
         aria-label="Vertical tabs example"
         className={classes.tabs}
+        textColor="primary" 
+        indicatorColor="primary"
+        
       >
         <Tab label={items[0]} {...a11yProps(0)} />
         <Tab label={items[1]} {...a11yProps(1)} />

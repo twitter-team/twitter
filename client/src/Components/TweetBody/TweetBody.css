@@ -1,8 +1,91 @@
 .tweet__image{
     width: 100% ;
-    height: 400px;
+    height: 60%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 15px;
 }
+.tweet-body{
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: start;
+    box-shadow: 7px 10px 87px 16px rgba(0,0,0,0.1);
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 20px;
+    background-color: #f5f8fa;
+}
+.tweet__top{
+    display: flex;
+    align-items: center
+}
+.twet__top__image{
+    text-decoration: none;
+    cursor: pointer
+}
+.avatar__image{
+    width: 50px;
+    height: 40px
+}
+.top__date{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.comments-saves{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: gray
+}
+.comments-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray
+}
+.comments-sec > div {
+    cursor: pointer;
+    display: flex;
+    align-items: center
+}
+.profile-comment{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px
+}
+.profile-link{
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 5px
+}
+.profile-othercomment{
+    display: flex ;
+    margin-top: 15px
+}
+.actual-comment{
+    margin: 0px;
+    margin-left:15px;
+    color: rgb(68, 68, 67)
+}
+.like-comment{
+    display:flex;
+    color:gray
+}
+.like-icon{
+    cursor: pointer;
+    display: flex;
+    align-items: center
+}
+@media (max-width: 900px)  {
+    .comments-sec{
+        border-top: none;
+        border-bottom: none
+    }
+    
+  }
