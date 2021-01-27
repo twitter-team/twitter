@@ -1,6 +1,5 @@
 import React from "react"
 import Avatar from '@material-ui/core/Avatar';
-import ProfileImage from "../../assets/girl.jpg"
 import TweetBodyImage from "../../assets/nature.jpg"
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom';
@@ -14,29 +13,29 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
 
-const TweetBody = ({ user }) => {
+const TweetBody = ({ user,tweetResult }) => {
     const isActive=useMediaQuery('(max-width:900px)')
 
     return (
         <div className="tweet-body">
             <div className="tweet__top" >
                 <Link to="/profile" className="twet__top__image">
-                    <Avatar ><img className=" avatar__image" src={ProfileImage} /></Avatar>
+                    <Avatar ><img className=" avatar__image" src={user.profilepic} />{user.name[0]}</Avatar>
                 </Link>
 
                 <div className='top__date'>
-                    <h4 style={{ margin: "0px" }} >{user.name.toUpperCase()}</h4>
-                    <h5 style={{ margin: "0px", color: "gray" }}>24 Augest 20:34</h5>
+                    <h4 style={{ margin: "0px" }} >{user&& user.name.toUpperCase()}</h4>
+                    <h5 style={{ margin: "0px", color: "gray" }}>{tweetResult.createdAt.split("T")[0]}</h5>
                 </div>
             </div>
             <h4 style={{ color: "gray" }}>
-                We travel, some do it forever.....,others they just dont know
+              {tweetResult.caption}
             </h4>
-            <img className="tweet__image" src={TweetBodyImage} />
+            <img className="tweet__image" src={tweetResult.img} />
 
             <div className="comments-saves ">
-                <h5 style={{ marginRight: "10px" }}>234 comments</h5>
-                <h5>234 saves</h5>
+                <h5 style={{ marginRight: "10px" }}>{tweetResult.comments.length} comments</h5>
+                <h5>{tweetResult.saved.length?tweetResult.saved.length:0} saves</h5>
             </div>
             <div className='comments-sec'>
                 <div>
@@ -81,31 +80,39 @@ const TweetBody = ({ user }) => {
             </div>
             <div className="profile-comment" >
                 <Link to="/profile" className="profile-link">
-                    <Avatar ><img className="avatar__image" src={ProfileImage} /></Avatar>
+                    <Avatar ><img className="avatar__image" src={user.profilepic} />{user.name[0]}</Avatar>
                 </Link>
-                <SearchBar />
+                <SearchBar tweetid={tweetResult._id}/>
             </div>
+            {
+                tweetResult.comments.map(comment=>{
+                    return(
+
             <div className="profile-othercomment">
                 <Link to="/profile" className="profile-link">
-                    <Avatar ><img className="avatar__image" src={ProfileImage} /></Avatar>
+                    <Avatar ><img className="avatar__image" src={comment.userid.profilepic} />{user.name[0]}</Avatar>
                 </Link>
                 <div style={{ marginLeft: "1rem" }}>
 
                     <div className="tweet__top" >
-                        <h4 style={{ margin: "0px" }} >{user.name.toUpperCase()}</h4>
-                        <h5 style={{ margin: "0px", color: "gray", marginLeft: "1rem" }}>24 Augest 20:34</h5>
+                        <h4 style={{ margin: "0px" }} >{user&&user.name.toUpperCase()}</h4>
+                        <h5 style={{ margin: "0px", color: "gray", marginLeft: "1rem" }}>{comment.createdAt.split("T")[0]}</h5>
+                        {/* <h5 style={{ margin: "0px", color: "gray", marginLeft: "1rem" }}>24 Augest 20:34</h5> */}
                     </div>
-                    <h4 className="actual-comment" >whatever you like</h4>
+                    <h4 className="actual-comment" >{comment.comment}</h4>
                     <div className="like-comment">
 
                         <div className="like-icon">
                             <FavoriteBorderIcon />
-                            <h4 style={{ marginLeft: "0.5rem" }}>Like</h4>
+                            <h4 style={{margin:"0px", marginLeft: "0.5rem" }}>Like </h4>
                         </div>
-                        <h4 style={{ marginLeft: "1rem" }}> 255 Likes</h4>
+                        <h4 style={{margin:"0px", marginLeft: "2rem" }}> {0 || comment.likes} Likes</h4>
                     </div>
                 </div>
             </div>
+                    )
+                })
+            }
         </div>
     )
 

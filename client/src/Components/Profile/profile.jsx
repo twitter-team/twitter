@@ -25,7 +25,7 @@ const Profile = ({ user }) => {
                             follow
                         </Button>
                     </div>
-                    <h4 className="profile__about">ABOUT ME</h4>
+                    <h4 className="profile__about">Photographer & Film maker</h4>
                 </div>
             </div>
             <div style={{ marginTop: "8%" }}>

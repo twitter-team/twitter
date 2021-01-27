@@ -4,12 +4,20 @@ import Trends from "../Trends/Trends"
 import TwitterEmbed from "../TwitterEmbed/TwitterEmbed"
 import TweetSomething from "../TweetSomething/TweetSomething"
 import TweetBody from "../TweetBody/TweetBody"
-const Home =()=>{
+import {connect} from "react-redux"
+
+const Home =({user})=>{
     return(
         <div className="homepage">
             <div className="hamepage__left">
             <TweetSomething/>
-            <TweetBody/>
+            {
+                user&& user.tweets.map(tweet=>{
+                    return(
+                        <TweetBody tweetResult={tweet}/>
+                    )
+                })
+            }
             </div>
             <div className="hamepage__right">
                 <Trends/>
@@ -18,4 +26,9 @@ const Home =()=>{
         </div>
     )
 }
-export default Home
+const mapStateToProps=({user:{user}})=>{
+    return {
+        user
+    }
+}
+export default connect(mapStateToProps)(Home)

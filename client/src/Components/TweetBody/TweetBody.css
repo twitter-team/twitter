@@ -80,7 +80,7 @@
 .like-icon{
     cursor: pointer;
     display: flex;
-    align-items: center
+    align-items: flex-start
 }
 @media (max-width: 900px)  {
     .comments-sec{

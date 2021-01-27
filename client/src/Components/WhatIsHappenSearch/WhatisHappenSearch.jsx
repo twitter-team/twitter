@@ -1,7 +1,5 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -46,18 +44,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function WhatisHappenSearch() {
+export default function WhatisHappenSearch({handleInputChange,inputVal}) {
   const classes = useStyles();
 
   return (
     <div className={classes.search} style={{ width: "100%", height: "120px" }}>
       <TextField
+      value={inputVal}
         id="outlined-multiline-static"
         label="What's happening..."
         multiline
         rows={4}
         variant="outlined"
         style={{ width: "100%" }}
+        onChange={(e)=>handleInputChange(e.target.value)}
       />
     </div>
 

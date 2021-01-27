@@ -5,13 +5,14 @@ import Profile from "./Components/Profile/profile"
 import Chat from "../src/Components/Chat/Chat"
 import { loadUser } from './Redux/user/userAction'
 import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
-
+import Welcome from './Components/Welcome/Welcome.jsx'
 import './App.css';
 
 const App = ({ loadUser,isAuth }) => {
 
   useEffect(() => {
     loadUser()
+    
   }, [])
 
 
@@ -19,6 +20,7 @@ const App = ({ loadUser,isAuth }) => {
     <div className="App">
       <Switch>
         <Route exact path="/" render={() => <ScrollableTabsButtonAuto />} />
+        <Route exact path="/welcome" render={() => <Welcome />} />
         <Route exact path="/chat" render={() =>
           !isAuth
             ? (<Redirect to='/' />)

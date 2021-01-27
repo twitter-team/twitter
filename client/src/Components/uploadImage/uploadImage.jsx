@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ImageIcon from '@material-ui/icons/Image';
 import "./uploadImage.css"
-const CloudImage = () => {
+const CloudImage = ({handleImageChange}) => {
 
   const [loading, setLoading] = useState(false)
-  // console.log('profileImage', profileImage)
+
 
   const uploadImage = (e) => {
     const formData = new FormData()
@@ -18,7 +18,8 @@ const CloudImage = () => {
     fetch('	https://api.cloudinary.com/v1_1/dzjchtsxn/image/upload', requestOptions)
       .then(response => response.json())
       .then(data => {
-        console.log("imaaaaaaaaaaage",data.secure_url)
+        handleImageChange(data.secure_url)
+        alert("image is uploaded")
       });
 
   }
