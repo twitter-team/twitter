@@ -11,14 +11,13 @@ export const Fail = () => ({
 })
 
 export const loadUser = () => async (dispatch) => {
-    console.log(localStorage.getItem('Authorization'))
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('Authorization') }
     };
     const res = await fetch(`${Local_IP}/api/user/auth`, requestOptions)
     const user = await res.json()
-    console.log(user)
+    console.log("userrrrrrrrrr",user)
     if(user.success){
         dispatch(setUser(user))
     }else{

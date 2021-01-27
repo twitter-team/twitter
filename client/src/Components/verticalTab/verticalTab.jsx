@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import SearcComp from "../searchComp/SearchComp"
 import TweetBody from "../TweetBody/TweetBody"
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {connect} from "react-redux"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme, h) => ({
   }
 }));
 
-const VerticalTabs = function ({ items }) {
+const VerticalTabs = function ({ items,user }) {
   const classes = useStyles(0, 250);
   const [value, setValue] = React.useState(0);
   const isActive=useMediaQuery('(max-width:900px)')
@@ -94,9 +95,21 @@ const VerticalTabs = function ({ items }) {
           items[0] === "top" ?
             <div>
               <SearcComp />
-              <TweetBody />
+              {
+                user.tweets.map(tweet=>{
+                    return(
+                        <TweetBody tweetResult={tweet}/>
+                    )
+                })
+            }
+              
             </div>
-            : <TweetBody />
+            :user.bookmarks.map(tweet=>{
+                  return(
+                      <TweetBody tweetResult={tweet}/>
+                  )
+              })
+          
         }
 
       </TabPanel>
@@ -105,9 +118,20 @@ const VerticalTabs = function ({ items }) {
           items[0] === "top" ?
             <div>
               <SearcComp />
-              <TweetBody />
+              {
+                user.tweets.map(tweet=>{
+                    return(
+                        <TweetBody tweetResult={tweet}/>
+                    )
+                })
+            }
             </div>
-            : <TweetBody />
+            :user.tweets.map(tweet=>{
+                  return(
+                      <TweetBody tweetResult={tweet}/>
+                  )
+              })
+          
         }
       </TabPanel>
       <TabPanel value={value} index={2} style={{ width: "100%" }}>
@@ -115,9 +139,20 @@ const VerticalTabs = function ({ items }) {
           items[0] === "top" ?
             <div>
               <SearcComp />
-              <TweetBody />
+              {
+                user.tweets.map(tweet=>{
+                    return(
+                        <TweetBody tweetResult={tweet}/>
+                    )
+                })
+            }
             </div>
-            : <TweetBody />
+            :user.tweets.map(tweet=>{
+                  return(
+                      <TweetBody tweetResult={tweet}/>
+                  )
+              })
+          
         }
       </TabPanel>
       <TabPanel value={value} index={3} style={{ width: "100%" }}>
@@ -125,12 +160,28 @@ const VerticalTabs = function ({ items }) {
           items[0] === "top" ?
             <div>
               <SearcComp />
-              <TweetBody />
+              {
+                user.tweets.map(tweet=>{
+                    return(
+                        <TweetBody tweetResult={tweet}/>
+                    )
+                })
+            }
             </div>
-            : <TweetBody />
+            :user.likes.map(tweet=>{
+                  return(
+                      <TweetBody tweetResult={tweet}/>
+                  )
+              })
+          
         }
       </TabPanel>
     </div>
   );
 }
-export default VerticalTabs
+const mapStateToProps=({user:{user}})=>{
+  return {
+      user
+  }
+}
+export default connect(mapStateToProps)(VerticalTabs)

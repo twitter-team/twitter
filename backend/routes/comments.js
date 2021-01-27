@@ -6,9 +6,10 @@ const Tweet = require('../models/Tweets')
 
 //saving the tweet in db
 router.post('/comment', async (req, res) => {
-    // console.log(req.body)
+    console.log(req.body)
     const comment = new Comments({
         userid: req.body.userid,
+        tweet:req.body.tweetid,
         comment: req.body.comment,
         img: req.body.img,
         likes: 0

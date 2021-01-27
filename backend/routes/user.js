@@ -11,9 +11,14 @@ router.get('/auth', auth, (req, res) => {
         id: req.user._id,
         name: req.user.name,
         email: req.user.email,
-        role: req.user.role,
-        number: req.user.number,
-        address: req.user.address,
+        profilepic:req.user.profilepic,
+        backgroundpic:req.user.backgroundpic,
+        bio:req.user.bio,
+        bookmarks:req.user.bookmarks,
+        followers:req.user.followers,
+        tweets:req.user.tweets,
+        retweets:req.user.retweets,
+        likes:req.user.likes,
         success: true
     })
 })
@@ -30,8 +35,7 @@ router.post('/signup', async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: hashedPw,
-            mobile: req.body.mobile,
-            bio: req.body.bio
+            profilepic: req.body.pic,
         })
 
         await user.save()
@@ -52,7 +56,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email })
+        const user = await User.findOne({ email: req.body.email }).populate("bookmarks").populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate("retweets").populate("likes")
         const match = await bcrypt.compare(req.body.password, user.password)
 
         if (match) {

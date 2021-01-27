@@ -12,6 +12,7 @@ const App = ({ loadUser,isAuth }) => {
 
   useEffect(() => {
     loadUser()
+    
   }, [])
 
 

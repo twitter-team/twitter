@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, TextField  } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 import { connect } from "react-redux"
-import {setUser} from "../../Redux/user/userAction"
+import { setUser } from "../../Redux/user/userAction"
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -9,7 +9,8 @@ class SignUp extends React.Component {
         this.state = {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            pic: ""
         }
     }
 
@@ -21,12 +22,12 @@ class SignUp extends React.Component {
     }
 
 
-    
+
     signUpReq = (obj) => {
         // Simple POST request with a JSON body using fetch
-        if(obj.password.length < 8 ){
+        if (obj.password.length < 8) {
             alert("Password must be at least 8 characters")
-        }else{
+        } else {
 
             const requestOptions = {
                 method: 'POST',
@@ -36,21 +37,21 @@ class SignUp extends React.Component {
             fetch('http://localhost:5000/api/user/signup', requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                    if(!data.token){
-                    alert("Email already exists")
-                    }else{
-                        localStorage.setItem('Authorization',data.token)
+                    if (!data.token) {
+                        alert("Email already exists")
+                    } else {
+                        localStorage.setItem('Authorization', data.token)
                         this.props.handleClose()
                         this.props.setUser(data.user)
-                        this.setState({ name: '',email: '',password: ''})
+                        this.setState({ name: '', email: '', password: '', pic: "" })
                     }
                 })
-                .catch(err=> {
+                .catch(err => {
                     alert("Email already exists")
                 })
         }
-            
-           
+
+
     }
 
     signUp = (e) => {
@@ -63,7 +64,7 @@ class SignUp extends React.Component {
 
     render() {
 
-        const { name, email, password } = this.state
+        const { name, email, password, pic } = this.state
         return (
 
             <form className='login' onSubmit={this.signUp}>
@@ -93,19 +94,27 @@ class SignUp extends React.Component {
                     onChange={this.handleChange}
                     required
                 />
-
+                <br />
+                <TextField className='Input'
+                    label='Picture'
+                    type='text'
+                    name='pic'
+                    value={pic}
+                    onChange={this.handleChange}
+                    required
+                />
                 <Button type='submit' className='dialog_button'  > Sign Up </Button>
-                </form>
+            </form>
 
         )
     }
 }
-const mapDispatchToProps=dispatch=>{
-    return{
-        setUser:user=>dispatch(setUser(user))
+const mapDispatchToProps = dispatch => {
+    return {
+        setUser: user => dispatch(setUser(user))
     }
 }
 
 
 
-export default connect(null,mapDispatchToProps)(SignUp)
+export default connect(null, mapDispatchToProps)(SignUp)
