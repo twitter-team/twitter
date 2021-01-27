@@ -47,7 +47,7 @@ const TweetBody = ({ user,tweetResult }) => {
                         <></>
                     }
                 </div>
-                <div>
+                <div style={{color:"green"}}>
                     <LoopIcon />
                     {
                         !isActive?
@@ -57,7 +57,7 @@ const TweetBody = ({ user,tweetResult }) => {
                     }
                     
                 </div>
-                <div>
+                <div style={{color:"red"}}>
                     <FavoriteBorderIcon />
                     {
                         !isActive?
@@ -67,7 +67,7 @@ const TweetBody = ({ user,tweetResult }) => {
                     }
                    
                 </div>
-                <div>
+                <div style={{color:"blue"}}>
                     <BookmarkBorderIcon />
                     {
                         !isActive?
