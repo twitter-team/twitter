@@ -29,6 +29,7 @@ const CommentLike = ({ comment, user }) => {
                     {/* <h5 style={{ margin: "0px", color: "gray", marginLeft: "1rem" }}>24 Augest 20:34</h5> */}
                 </div>
                 <h4 className="actual-comment" >{comment.comment}</h4>
+                {console.log("ffffffffffffffffffffff",comment)}
                 {
                     comment.img?
                     <img src={comment.img} style={{maxWidth:"30%",maxHeight:"40%"}}/>

@@ -19,7 +19,10 @@ const App = ({ loadUser,isAuth }) => {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" render={() => <ScrollableTabsButtonAuto />} />
+        <Route exact path="/" render={() =>  
+        !isAuth
+        ? (<Redirect to='/welcome' />)
+        : (<ScrollableTabsButtonAuto />)} />
         <Route exact path="/welcome" render={() => 
         isAuth
         ? (<Redirect to='/' />)

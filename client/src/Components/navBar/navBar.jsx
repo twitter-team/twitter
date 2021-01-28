@@ -5,7 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
-
+import TwitterIcon from '@material-ui/icons/Twitter';
+import IconButton from "@material-ui/core/IconButton";
 import ProfileAndDropDown from "../profileAndDropdown/profileAndDropdown"
 
 import "../Header/style.css"
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: theme.palette.background.paper,
     },
-    nav:{
+    nav: {
         maxHeight: "70px",
         display: "flex",
         flexDirection: "row",
@@ -59,8 +60,10 @@ const NavBar = function () {
         <div className={classes.root} >
 
             <AppBar position="static" color="default" className={classes.nav}  >
-                <Link to="/" style={{ cursor: "pointer" }}>
-                    <img className='header__logo' src='https://icons-for-free.com/iconfiles/png/512/twitter+twitter+button+twitter+logo+icon-1320190501026673072.png' alt='Twitter' />
+                <Link to="/" style={{marginLeft:"15px"}}>
+                <IconButton color="inherit">
+                    <TwitterIcon style={{ fontSize: "50px", color: "rgb(74,160,236)" }} />
+                </IconButton>
                 </Link>
                 <div className='header__taps'>
                     <ProfileAndDropDown />
