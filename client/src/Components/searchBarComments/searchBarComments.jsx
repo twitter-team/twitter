@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloudImage from "../uploadImage/uploadImage"
 import SendIcon from '@material-ui/icons/Send';
 import { connect } from 'react-redux';
-import { reloadIt,loadUser } from '../../Redux/user/userAction'
+import { reloadIt, loadUser } from '../../Redux/user/userAction'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +33,7 @@ const CustomizedInputBase = function ({ reloadIt, reloadme, loadUser, tweetid, u
   const classes = useStyles();
   const [input, setInput] = useState("")
   const [image, setImage] = useState("")
-console.log("imaaaaaaaaage",image)
+
   useEffect(() => {
     loadUser()
   }, [reloadme])
@@ -41,9 +41,8 @@ console.log("imaaaaaaaaage",image)
   const handleInputChange = (e) => {
     setInput(e.target.value)
   }
-  const handleImageChange =  (data) => {
-    console.log("my image",data)
-     setImage(data)
+  const handleImageChange = async (data) => {
+    await setImage(data)
   }
   const handleSubmit = async (e) => {
     e.preventDefault()

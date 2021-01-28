@@ -18,8 +18,8 @@ const Profile = ({ user }) => {
                     <div className="profile__right ">
                         <h3>{user.name.toUpperCase()}</h3>
                         <div className="profile__follower">
-                            <span><strong>2586</strong> following</span>
-                            <span style={{ marginLeft: "10px" }}><strong>2586</strong> followers</span>
+                            <span><strong>0</strong> following</span>
+                            <span style={{ marginLeft: "10px" }}><strong>0</strong> followers</span>
                         </div>
                         {/* <Button variant="contained" color="primary">
                             follow

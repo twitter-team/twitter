@@ -17,7 +17,8 @@ import Home from "../Home/home"
 import Explore from "../Explore/explore"
 import "../Header/style.css"
 import { Link } from 'react-router-dom';
-
+import TwitterIcon from '@material-ui/icons/Twitter';
+import IconButton from "@material-ui/core/IconButton";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -89,8 +90,10 @@ const ScrollableTabsButtonAuto = function ({ isAuth}) {
         <div className={classes.root} >
 
             <AppBar position="static" color="default" className={classes.navBar} >
-            <Link to="/" className={classes.navBar__logo}>
-                    <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
+            <Link to="/" style={{marginLeft:"15px"}}>
+                <IconButton color="inherit">
+                    <TwitterIcon style={{ fontSize: "50px", color: "rgb(74,160,236)" }} />
+                </IconButton>
                 </Link>
                 {
                     !isActive?
