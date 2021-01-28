@@ -21,9 +21,9 @@ const Profile = ({ user }) => {
                             <span><strong>2586</strong> following</span>
                             <span style={{ marginLeft: "10px" }}><strong>2586</strong> followers</span>
                         </div>
-                        <Button variant="contained" color="primary">
+                        {/* <Button variant="contained" color="primary">
                             follow
-                        </Button>
+                        </Button> */}
                     </div>
                     <h4 className="profile__about">Photographer & Film maker</h4>
                 </div>

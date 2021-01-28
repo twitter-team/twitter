@@ -60,7 +60,7 @@ const NavBar = function () {
 
             <AppBar position="static" color="default" className={classes.nav}  >
                 <Link to="/" style={{ cursor: "pointer" }}>
-                    <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
+                    <img className='header__logo' src='https://icons-for-free.com/iconfiles/png/512/twitter+twitter+button+twitter+logo+icon-1320190501026673072.png' alt='Twitter' />
                 </Link>
                 <div className='header__taps'>
                     <ProfileAndDropDown />

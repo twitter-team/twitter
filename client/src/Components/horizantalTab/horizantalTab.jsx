@@ -90,7 +90,7 @@ const ScrollableTabsButtonAuto = function ({ isAuth}) {
 
             <AppBar position="static" color="default" className={classes.navBar} >
             <Link to="/" className={classes.navBar__logo}>
-                    <img className='header__logo' src='https://acruxlatam.com/images/logo-acrux-md.png' alt='Twitter' />
+                    <img className='header__logo' src='https://icons-for-free.com/iconfiles/png/512/twitter+twitter+button+twitter+logo+icon-1320190501026673072.png' alt='Twitter' />
                 </Link>
                 {
                     !isActive?

@@ -60,3 +60,6 @@ export const signUp = (name,email,password) => async(dispatch) => {
 export const logOut = () => ({
     type: UserTypes.LOGOUT
 })
+export const reloadIt = () => ({
+    type: UserTypes.RELOAD
+})

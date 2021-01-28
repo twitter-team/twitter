@@ -56,7 +56,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email }).populate("bookmarks").populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate("retweets").populate("likes")
+        const user = await User.findOne({ email: req.body.email }).populate({ path: "bookmarks", populate: { path: "comments", populate: { path: "userid" } } }).populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate({ path: "retweets", populate: { path: "comments", populate: { path: "userid" } } }).populate({ path: "likes", populate: { path: "comments", populate: { path: "userid" } } })
         const match = await bcrypt.compare(req.body.password, user.password)
 
         if (match) {
@@ -77,7 +77,7 @@ router.post('/signin', async (req, res) => {
 //geting the userinfo 
 router.post('/profile', async (req, res) => {
     console.log(req.body.userid)
-    await User.findOne({ _id: req.body.userid }).populate("bookmarks").populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate("retweets").populate("likes")
+    await User.findOne({ _id: req.body.userid }).populate({ path: "bookmarks", populate: { path: "comments", populate: { path: "userid" } } }).populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate({ path: "retweets", populate: { path: "comments", populate: { path: "userid" } } }).populate({ path: "likes", populate: { path: "comments", populate: { path: "userid" } } })
         .exec(async (err, user) => {
             if (err) return res.status(404).json({ success: false })
             res.json(user)

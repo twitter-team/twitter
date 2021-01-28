@@ -24,6 +24,7 @@ const LongMenu = function ({ logOut }) {
     const handleClickLogout = () => {
         localStorage.removeItem("Authorization")
         logOut()
+        // window.location.herf='http://localhost:3000/welcome'
     }
 
     const handleClose = () => {
