@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloudImage from "../uploadImage/uploadImage"
 import SendIcon from '@material-ui/icons/Send';
 import { connect } from 'react-redux';
+import { reloadIt,loadUser } from '../../Redux/user/userAction'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,11 +29,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CustomizedInputBase = function ({ tweetid, user }) {
+const CustomizedInputBase = function ({ reloadIt, reloadme, loadUser, tweetid, user }) {
   const classes = useStyles();
   const [input, setInput] = useState("")
   const [image, setImage] = useState("")
-  console.log(input)
+
+  useEffect(() => {
+    loadUser()
+  }, [reloadme])
+
   const handleInputChange = (e) => {
     setInput(e.target.value)
   }
@@ -41,6 +46,7 @@ const CustomizedInputBase = function ({ tweetid, user }) {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    reloadIt()
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -72,9 +78,17 @@ const CustomizedInputBase = function ({ tweetid, user }) {
     </Paper>
   );
 }
-const mapStateToProps = ({ user: { user } }) => {
+const mapStateToProps = ({ user: { user, reloadme } }) => {
   return {
-    user
+    user,
+    reloadme
   }
 }
-export default connect(mapStateToProps)(CustomizedInputBase)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    reloadIt: () => dispatch(reloadIt()),
+    loadUser: () => dispatch(loadUser()),
+
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CustomizedInputBase)

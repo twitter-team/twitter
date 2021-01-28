@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
     if (token) {
       const decoded = await jwt.verify(token, process.env.SECRET) 
      
-      const user = await User.findOne({ _id: decoded._id }).populate("bookmarks").populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate("retweets").populate("likes")
+      const user = await User.findOne({ _id: decoded._id }).populate({ path: "bookmarks", populate: { path: "comments", populate: { path: "userid" } } }).populate("following").populate("followers").populate({ path: "tweets", populate: { path: "comments", populate: { path: "userid" } } }).populate({ path: "retweets", populate: { path: "comments", populate: { path: "userid" } } }).populate({ path: "likes", populate: { path: "comments", populate: { path: "userid" } } })
       req.user = user
       next()
 

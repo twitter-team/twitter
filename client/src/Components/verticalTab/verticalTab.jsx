@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -12,6 +12,7 @@ import {connect} from "react-redux"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  
 
   return (
     <div
@@ -67,7 +68,17 @@ const VerticalTabs = function ({ items,user }) {
   const classes = useStyles(0, 250);
   const [value, setValue] = React.useState(0);
   const isActive=useMediaQuery('(max-width:900px)')
+  const [alltweets,setAlltweets]=useState([])
 
+  useEffect(async() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+  };
+  const res = await fetch(`http://localhost:5000/api/tweets/tweets`, requestOptions)
+  const data = await res.json()
+  setAlltweets(data)
+}, [])
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -96,7 +107,7 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user && user.tweets.map(tweet=>{
+               alltweets && alltweets.reverse().map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
@@ -104,7 +115,7 @@ const VerticalTabs = function ({ items,user }) {
             }
               
             </div>
-            :user && user.bookmarks.map(tweet=>{
+            :user && user.bookmarks.reverse().map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
@@ -119,14 +130,14 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user && user.tweets.map(tweet=>{
+                user && user.tweets.reverse().map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
                 })
             }
             </div>
-            :user && user.tweets.map(tweet=>{
+            :user && user.tweets.reverse().map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
@@ -140,14 +151,14 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user && user.tweets.map(tweet=>{
+                user && user.tweets.reverse().map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
                 })
             }
             </div>
-            :user && user.tweets.map(tweet=>{
+            :user && user.tweets.reverse().map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
@@ -161,14 +172,14 @@ const VerticalTabs = function ({ items,user }) {
             <div>
               <SearcComp />
               {
-                user && user.tweets.map(tweet=>{
+                user && user.tweets.reverse().map(tweet=>{
                     return(
                         <TweetBody tweetResult={tweet}/>
                     )
                 })
             }
             </div>
-            :user && user.likes.map(tweet=>{
+            :user && user.likes.reverse().map(tweet=>{
                   return(
                       <TweetBody tweetResult={tweet}/>
                   )
