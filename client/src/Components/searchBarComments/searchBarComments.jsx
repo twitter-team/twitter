@@ -33,7 +33,7 @@ const CustomizedInputBase = function ({ reloadIt, reloadme, loadUser, tweetid, u
   const classes = useStyles();
   const [input, setInput] = useState("")
   const [image, setImage] = useState("")
-
+console.log("imaaaaaaaaage",image)
   useEffect(() => {
     loadUser()
   }, [reloadme])
@@ -41,8 +41,9 @@ const CustomizedInputBase = function ({ reloadIt, reloadme, loadUser, tweetid, u
   const handleInputChange = (e) => {
     setInput(e.target.value)
   }
-  const handleImageChange = async (data) => {
-    await setImage(data)
+  const handleImageChange =  (data) => {
+    console.log("my image",data)
+     setImage(data)
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
