@@ -25,7 +25,7 @@ export default function MaxWidthDialog() {
                 <DialogContent>
                     <div>
                         <div className="Dialog">
-                            <img className='Dialog__image' src='https://i.pinimg.com/736x/9f/32/20/9f3220f4535dd9cd9743b995fdfdeaa1.jpg' alt='ss' />
+                            <img className='Dialog__image' src='https://icons-for-free.com/iconfiles/png/512/twitter+twitter+button+twitter+logo+icon-1320190501026673072.png' alt='ss' />
                         </div>
                         <div>
                             <LogIn handleClose={handleClose}/>
