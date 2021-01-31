@@ -2,6 +2,7 @@
 Tweeter-like web page.
 
 ---------------------------------------------------------------------------------------
+
 ## User stories :
 - User story: I can see my profile 
 - User story: When I am on a profile, I can see Tweets and Retweets. I can also filter by Tweets, Tweets and replies, Media and Likes.
@@ -18,21 +19,26 @@ Tweeter-like web page.
 - User story: When I am on Explore, I can see the Top, Latest Tweet, or Tweet with Media.
 - User story: When I am on Bookmarks, I can see the Saved Tweet.
 ---------------------------------------------------------------------------------------
+
 ## Team: 
-@ Halasalhab
+[Asem](https://github.com/asemnouri),[Hala](https://github.com/Halasalhab)
 
 ---------------------------------------------------------------------------------------
+
 ## Used technologies :
-* [Figma](https://www.figma.com/file/xxf4TG14lpF3vFUbBtEZUR/Tweeter?node-id=1%3A12)
+* UX: [Figma](https://www.figma.com/file/xxf4TG14lpF3vFUbBtEZUR/Tweeter?node-id=1%3A12)
 * FrontEnd: React(Redux).
 * BackEnd: NodeJS.
 * Uploading images: cloudinary.
 * Authantication: JWT
+
 ---------------------------------------------------------------------------------------
+
 ## Requierment to run the project:
 Visual studio, NodeJS 
 
 ---------------------------------------------------------------------------------------
+
 ## How to run :
 ### Frontend 
 ```
