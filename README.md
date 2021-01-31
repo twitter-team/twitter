@@ -21,7 +21,7 @@ Tweeter-like web page.
 ---------------------------------------------------------------------------------------
 
 ## Team: 
-[Asem](https://github.com/asemnouri),[Hala](https://github.com/Halasalhab)
+[Asem](https://github.com/asemnouri), [Hala](https://github.com/Halasalhab)
 
 ---------------------------------------------------------------------------------------
 
