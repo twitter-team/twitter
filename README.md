@@ -1,5 +1,7 @@
 # Tweeter - [Twitter Clone](https://docs.google.com/document/d/1Lq3bxTL4m_LjMl_6Kltiodl7Mq3CH06guvZASqqs_ho/edit)
 Tweeter-like web page.
+
+---------------------------------------------------------------------------------------
 ## User stories :
 - User story: I can see my profile 
 - User story: When I am on a profile, I can see Tweets and Retweets. I can also filter by Tweets, Tweets and replies, Media and Likes.
@@ -17,7 +19,8 @@ Tweeter-like web page.
 - User story: When I am on Bookmarks, I can see the Saved Tweet.
 ---------------------------------------------------------------------------------------
 ## Team: 
-@Halasalhab
+@ Halasalhab
+
 ---------------------------------------------------------------------------------------
 ## Used technologies :
 * [Figma](https://www.figma.com/file/xxf4TG14lpF3vFUbBtEZUR/Tweeter?node-id=1%3A12)
@@ -28,6 +31,7 @@ Tweeter-like web page.
 ---------------------------------------------------------------------------------------
 ## Requierment to run the project:
 Visual studio, NodeJS 
+
 ---------------------------------------------------------------------------------------
 ## How to run :
 ### Frontend 
